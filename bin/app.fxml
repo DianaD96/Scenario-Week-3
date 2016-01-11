@@ -136,7 +136,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="BUILD" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" text="BUILD" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            
+            <graphic>
+            <ImageView fitHeight="20.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+            <Image url="http://icons.iconarchive.com/icons/dtafalonso/android-l/512/Settings-L-icon.png" />
+            </image>
+            </ImageView>
+            </graphic>
+            
+            
+            </Button>
          </children>
       </GridPane>
       
