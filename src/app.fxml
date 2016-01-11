@@ -112,13 +112,23 @@
                       </TitledPane>
                     </panes>
                   </Accordion>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Components" textOrigin="CENTER" AnchorPane.topAnchor="0.0" />
+                  <GridPane maxWidth="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Components" textOrigin="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER"  />
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
         </items>
       </SplitPane>
-      <GridPane layoutY="32.0" maxHeight="66.0" prefHeight="66.0" prefWidth="1037.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+      <GridPane layoutY="32.0" maxHeight="70.0" prefHeight="70.0" prefWidth="1037.0" style="-fx-background-color: steelblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
