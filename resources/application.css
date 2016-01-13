@@ -1,0 +1,71 @@
+.dragicon {
+	-fx-background-radius: 10; 
+}
+
+.node-overlay {
+	-fx-background-radius: 10 10 0 0;
+	-fx-background-color:
+	linear-gradient(to bottom, rgba(255,255,255,0.7) 15%, rgba(50,100,150,0.45) 100%);
+	
+}
+
+.right-link-handle:hover {
+	-fx-background-radius: 0 0 10 0;
+	-fx-background-color:
+	rgba(255, 255, 255, 0.35);
+}
+
+.left-link-handle:hover {
+	-fx-background-radius: 0 0 0 10;
+	-fx-background-color:
+	rgba(255, 255, 255, 0.35);
+}
+
+.icon-blue {
+	-fx-background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/da/Ammeter.png");
+	-fx-background-repeat: stretch; 
+	-fx-background-size: 120 70;  
+    -fx-background-position: center center;
+}
+
+.icon-red {
+	-fx-background-image: url("http://www.mrsciguy.com/Physics/Electricity/images/voltmeter.gif");
+	-fx-background-repeat: stretch; 
+	-fx-background-size: 120 70;  
+    -fx-background-position: center center;
+}
+
+.icon-green {
+	-fx-background-image: url("http://www.clipartbest.com/cliparts/RTA/eKd/RTAeKdyTL.gif");
+	-fx-background-repeat: stretch; 
+	-fx-background-size: 120 70;  
+    -fx-background-position: center center;
+}
+
+.icon-black {
+	-fx-background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Capacitor_symbol_GOST.svg/2000px-Capacitor_symbol_GOST.svg.png");
+	-fx-background-repeat: stretch; 
+	-fx-background-size: 120 70;  
+    -fx-background-position: center center;
+}
+
+.icon-grey {
+	-fx-background-image: url("http://res.cloudinary.com/dk-find-out/image/upload/q_80,w_640/Electrical-symbol-bulb_znawrt.jpg");
+	-fx-background-repeat: stretch; 
+	-fx-background-size: 120 70;  
+    -fx-background-position: center center;
+}
+
+.icon-yellow {
+	-fx-background-image: url("http://www.clker.com/cliparts/6/9/a/8/1223615567190235753rsamurti_RSA_IEC_Inductor_Symbol-1.svg.hi.png");
+	-fx-background-repeat: stretch; 
+	-fx-background-size: 120 70;  
+    -fx-background-position: center center;
+}
+
+.icon-purple {
+	-fx-background-image: url("http://www.pd4pic.com/images/switch-symbol-circuit-electric-electronics.png");
+	-fx-background-repeat: stretch; 
+	-fx-background-size: 120 70;  
+    -fx-background-position: center center;
+}
