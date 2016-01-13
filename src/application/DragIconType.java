@@ -1,11 +1,13 @@
 package application;
 
 public enum DragIconType {
-	red,
-	green,
-	blue,
-	black,
-	yellow,
-	purple,
-	grey
+	voltmeter,
+	resistor,
+	ammeter,
+	capacitor,
+	bulb,
+	inductor,
+	switch_icon,
+	dot,
+	cubic_curve
 }

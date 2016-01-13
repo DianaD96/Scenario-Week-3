@@ -10,7 +10,7 @@
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane styleClass="node-overlay">
+            <GridPane>
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="25.0" />
@@ -24,7 +24,7 @@
                         <Insets right="10.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="title_bar" text="Label" />
+                  <Label fx:id="title_bar" text="Label" textFill="WHITE" />
                </children>
             </GridPane>
             <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="66.0">

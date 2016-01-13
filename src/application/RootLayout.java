@@ -7,6 +7,7 @@ import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
@@ -58,7 +59,7 @@ public class RootLayout extends AnchorPane{
 		getChildren().add(mDragOverIcon);
 		
 		//populate left pane with multiple colored icons for testing
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 8; i++) {
 			
 			DragIcon icn = new DragIcon();
 			
@@ -176,25 +177,41 @@ public class RootLayout extends AnchorPane{
 								
 				mDragOverIcon.setVisible(false);
 				
+				//Create node drag operation
 				DragContainer container = 
 						(DragContainer) event.getDragboard().getContent(DragContainer.AddNode);
 				
 				if (container != null) {
 					if (container.getValue("scene_coords") != null) {
 					
-						DraggableNode node = new DraggableNode();
-						
-						node.setType(DragIconType.valueOf(container.getValue("type")));
-						right_pane.getChildren().add(node);
+						if (container.getValue("type").equals(DragIconType.cubic_curve.toString())) {
+							CubicCurveDemo curve = new CubicCurveDemo();
+							
+							right_pane.getChildren().add(curve);
+							
+							Point2D cursorPoint = container.getValue("scene_coords");
 
-						Point2D cursorPoint = container.getValue("scene_coords");
-
-						node.relocateToPoint(
-								new Point2D(cursorPoint.getX() - 32, cursorPoint.getY() - 32)
-								);
+							curve.relocateToPoint(
+									new Point2D(cursorPoint.getX() - 32, cursorPoint.getY() - 32)
+									);							
+						}
+						else {
+							
+							DraggableNode node = new DraggableNode();
+							
+							node.setType(DragIconType.valueOf(container.getValue("type")));
+							right_pane.getChildren().add(node);
+	
+							Point2D cursorPoint = container.getValue("scene_coords");
+	
+							node.relocateToPoint(
+									new Point2D(cursorPoint.getX() - 32, cursorPoint.getY() - 32)
+									);
+						}
 					}
 				}
-				
+				/*
+				//Move node drag operation
 				container = 
 						(DragContainer) event.getDragboard().getContent(DragContainer.DragNode);
 				
@@ -202,7 +219,48 @@ public class RootLayout extends AnchorPane{
 					if (container.getValue("type") != null)
 						System.out.println ("Moved node " + container.getValue("type"));
 				}
+				*/
+
+				//AddLink drag operation
+				container =
+						(DragContainer) event.getDragboard().getContent(DragContainer.AddLink);
 				
+				if (container != null) {
+					
+					//bind the ends of our link to the nodes whose id's are stored in the drag container
+					String sourceId = container.getValue("source");
+					String targetId = container.getValue("target");
+
+					if (sourceId != null && targetId != null) {
+						
+						//	System.out.println(container.getData());
+						NodeLink link = new NodeLink();
+						
+						//add our link at the top of the rendering order so it's rendered first
+						right_pane.getChildren().add(0,link);
+						
+						DraggableNode source = null;
+						DraggableNode target = null;
+						
+						for (Node n: right_pane.getChildren()) {
+							
+							if (n.getId() == null)
+								continue;
+							
+							if (n.getId().equals(sourceId))
+								source = (DraggableNode) n;
+						
+							if (n.getId().equals(targetId))
+								target = (DraggableNode) n;
+							
+						}
+						
+						if (source != null && target != null)
+							link.bindEnds(source, target);
+					}
+						
+				}
+
 				event.consume();
 			}
 		});		
