@@ -18,12 +18,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class RootLayout extends AnchorPane{
 
 	@FXML SplitPane base_pane;
 	@FXML AnchorPane right_pane;
 	@FXML VBox left_pane;
+	@FXML Text component_text;
 
 	private DragIcon mDragOverIcon = null;
 	
@@ -39,6 +41,24 @@ public class RootLayout extends AnchorPane{
 		Circuit series = new Circuit();
 		System.out.println("Starting at "+NodeLink.getStartingPoint());
 		series.run(NodeLink.getStartingPoint());
+		
+		String final_text = new String();
+		int i=0;
+		final_text=final_text+"OUTPUTS:";
+		for (String x: container.print_stuff)
+		{
+			if (i%4==0) //Component
+				final_text=final_text+"\n\nComponent: "+x;
+			if ((i-1)%4==0) // Voltage
+				final_text=final_text+"\nVoltage: "+x;
+			if ((i-2)%4==0) // Resistance
+				final_text=final_text+"\nResistance: "+x;
+			if ((i-3)%4==0) // Current
+				final_text=final_text+"\nCurrent: "+x;
+			i++;
+		}
+			
+			component_text.setText(final_text);
 	}
 	
 	public RootLayout() {

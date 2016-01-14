@@ -105,8 +105,10 @@ public class Circuit{
 		Component traverse = firstNode;
 		traverse = traverse.getOutput();
 		while(traverse != firstNode){
+			//container.print_stuff_properties.add(traverse.getClass().getCanonicalName());
 			System.out.println("Data for "+traverse+" V: "+traverse.getVoltage()+" R: "+traverse.getResistance()+" I: "+traverse.getCurrent());
 			traverse = traverse.getOutput();
+			//container.print_stuff.add(traverse.);
 		}
 	}
 	
@@ -165,7 +167,57 @@ public class Circuit{
 	}
 	
 	public void printList(){
+		container.bulb_counter--;
+		container.source_counter--;
+		container.ammeter_counter--;
+		container.voltmeter_counter--;
+		container.resistor_counter--;
+		container.source_counter--;
 		for(Component item : list){
+			switch(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())){
+			   
+				case "Ammeter":
+				{
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.ammeter_counter);
+					container.ammeter_counter--;
+					break;
+				}
+				case "Voltmeter":
+				{
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.voltmeter_counter);
+					container.voltmeter_counter--;
+					break;
+				}
+				case "Resistor":
+				{
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.resistor_counter);
+					container.resistor_counter--;
+					break;
+				}
+				case "Bulb":
+				{
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.bulb_counter);
+					container.bulb_counter--;
+					break;
+				}
+				case "Battery":
+				{
+					container.print_stuff.add("Source "+container.source_counter);
+					container.source_counter--;
+					break;
+				}
+				
+				default:
+				{
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length()));
+					break;
+				}
+			  
+			}
+			//container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length()));
+			container.print_stuff.add(Double.toString(item.getVoltage()));
+			container.print_stuff.add(Double.toString(item.getResistance()));
+			container.print_stuff.add(Double.toString(item.getCurrent()));
 			System.out.println("Data for "+ item +" V: "+item.getVoltage()+" R: "+item.getResistance()+" I: "+item.getCurrent());
 		}
 	}
