@@ -4,19 +4,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
  
+
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import javax.swing.*;
- 
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-
+/*
+ * xmlWrite newWriter = new xmlWrite(componentList);		
+ * xmlRead newReader = new xmlRead();
+ * ArrayList<Component> testList = new ArrayList<Component>();
+ * testList = newReader.readXML();
+ * 
+ */
 
 public class xmlRead {
 
@@ -24,7 +31,7 @@ public class xmlRead {
 		
 	}
 	
-	public ArrayList<Component> readXML(String storedLocation) {
+	public ArrayList<Component> readXML() {
 		JFileChooser f = new JFileChooser();
         //f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
 		f.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
