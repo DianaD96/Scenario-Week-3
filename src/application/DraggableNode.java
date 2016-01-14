@@ -127,40 +127,76 @@ public class DraggableNode extends AnchorPane {
 			switch (mType) {
 			
 			case ammeter:
+			{
+				title_bar.setText("Amm "+container.ammeter_counter);
 				getStyleClass().add("icon-ammeter");
-			break;
+				container.ammeter_counter++;
+				break;
+			}
 
 			case voltmeter:
-				getStyleClass().add("icon-voltmeter");			
-			break;
-
+			{
+				title_bar.setText("Vol "+container.voltmeter_counter);
+				getStyleClass().add("icon-voltmeter");
+				container.voltmeter_counter++;
+				break;
+			}
+			
 			case resistor:
+			{
+				title_bar.setText("Res "+container.resistor_counter);
 				getStyleClass().add("icon-resistor");
-			break;
+				container.resistor_counter++;
+				break;
+			}
 
 			case switch_icon:
+			{
+				title_bar.setText("Switch "+container.switch_icon_counter);
 				getStyleClass().add("icon-switch_icon");
-			break;
-
+				container.switch_icon_counter++;
+				break;
+			}
+			
 			case inductor:
+			{
+				title_bar.setText("Induc "+container.inductor_counter);
 				getStyleClass().add("icon-inductor");
-			break;
+				container.inductor_counter++;
+				break;
+			}
 
 			case bulb:
+			{
+				title_bar.setText("Bulb "+container.bulb_counter);
 				getStyleClass().add("icon-bulb");
-			break;
+				container.bulb_counter++;
+				break;
+			}
 
 			case capacitor:
+			{
+				title_bar.setText("Cap "+container.capacitor_counter);
 				getStyleClass().add("icon-capacitor");
-			break;
+				container.capacitor_counter++;
+				break;
+			}
 			
 			case dot:
+			{
+				title_bar.setText("Dot "+container.dot_counter);
 				getStyleClass().add("icon-dot");
-			break;
+				container.dot_counter++;
+				break;
+			}
 			
 			case source:
+			{
+				title_bar.setText("Source "+container.source_counter++);
 				getStyleClass().add("icon-source");
-			break;
+				container.source_counter++;
+				break;
+			}
 			
 			default:
 			break;
