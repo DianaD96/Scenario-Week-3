@@ -8,6 +8,7 @@ public enum DragIconType {
 	bulb,
 	inductor,
 	switch_icon,
+	source,
 	dot,
 	cubic_curve
 }

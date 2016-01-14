@@ -158,6 +158,10 @@ public class DraggableNode extends AnchorPane {
 				getStyleClass().add("icon-dot");
 			break;
 			
+			case source:
+				getStyleClass().add("icon-source");
+			break;
+			
 			default:
 			break;
 			}

@@ -23,6 +23,7 @@ public class Simulation {
 		
 		//Define relations (I/O)
 		cell.setInput(beta);
+		
 		cell.setOutput(alpha);
 		alpha.setInput(cell);
 		alpha.setOutput(resist);
@@ -30,6 +31,7 @@ public class Simulation {
 		resist.setOutput(light);
 		light.setInput(resist);
 		light.setOutput(beta);
+		
 		beta.setInput(light);
 		beta.setOutput(cell);
 		

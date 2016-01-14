@@ -14,6 +14,8 @@ public class Component {
 	private int positionY;
 	private int rotation;
 	
+	private String id;
+	
 	// Internal circuit data
 	public double voltage;
 	public double resistance = 0;
@@ -29,6 +31,16 @@ public class Component {
 		
 	}
 	// Getters
+	
+	public String getId()
+	{
+		return id;
+	}
+	
+	public void setId(String id)
+	{
+		this.id=id;
+	}
 	
 	public Component getInput(){
 		return input;

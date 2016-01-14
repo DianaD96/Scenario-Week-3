@@ -15,7 +15,7 @@ public class Circuit{
 	
 	public void run(Component firstNode){
 		computeGlobals(firstNode);
-		//computeSpecifics(firstNode);
+		computeSpecifics(firstNode);
 		//printSpecificComponentData(firstNode);
 		printList();
 	}
@@ -26,7 +26,6 @@ public class Circuit{
 		System.out.println("Currently at..."+firstNode);
 		Component traverse = firstNode;
 		list.add(firstNode);
-		collateGlobalData(traverse);
 		traverse = firstNode.getOutput();
 		while(traverse != firstNode){
 			System.out.println("Moved to "+traverse+ "of type "+traverse.getClass().getCanonicalName());

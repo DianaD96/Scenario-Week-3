@@ -84,6 +84,9 @@ public class DragIcon extends AnchorPane{
 			getStyleClass().add("icon-capacitor");
 		break;
 		
+		case source:
+			getStyleClass().add("icon-source");
+		break;
 		case dot:
 			getStyleClass().add("icon-dot");
 		break;

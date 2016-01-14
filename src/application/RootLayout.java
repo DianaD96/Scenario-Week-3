@@ -2,12 +2,14 @@ package application;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
@@ -28,6 +30,16 @@ public class RootLayout extends AnchorPane{
 	private EventHandler<DragEvent> mIconDragOverRoot = null;
 	private EventHandler<DragEvent> mIconDragDropped = null;
 	private EventHandler<DragEvent> mIconDragOverRightPane = null;
+	
+	@FXML static Button run_button;
+	
+	public void handleButton(ActionEvent ac)
+	{
+		System.out.println("..........");
+		Circuit series = new Circuit();
+		System.out.println("Starting at "+NodeLink.getStartingPoint());
+		series.run(NodeLink.getStartingPoint());
+	}
 	
 	public RootLayout() {
 		
@@ -59,7 +71,7 @@ public class RootLayout extends AnchorPane{
 		getChildren().add(mDragOverIcon);
 		
 		//populate left pane with multiple colored icons for testing
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 9; i++) {
 			
 			DragIcon icn = new DragIcon();
 			
