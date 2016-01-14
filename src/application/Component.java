@@ -1,4 +1,4 @@
-package componets;
+package application;
 
 public class Component {
 	// define variables for all componets to inherit

@@ -1,4 +1,4 @@
-package componets;
+package application;
 
 public class Motor extends Component {
 	

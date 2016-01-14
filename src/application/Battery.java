@@ -1,4 +1,4 @@
-package componets;
+package application;
 
 public class Battery extends Component {
 	
