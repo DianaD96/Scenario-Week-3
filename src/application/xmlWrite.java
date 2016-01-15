@@ -58,13 +58,21 @@ public class xmlWrite {
 		}
 	}
 	
+	
+	// Only edit this
 	private Node getComponent(Document doc, Component newComponent) {
 		Element component = doc.createElement("Component");
 		//component.setAttribute("id", id);
-		component.appendChild(getComponentElements(doc, component, "Name", newComponent.getClass().getCanonicalName()));
+		
+		component.appendChild(getComponentElements(doc, component, "Name", newComponent.getClass().getSimpleName()));
 		component.appendChild(getComponentElements(doc, component, "Current", Double.toString(newComponent.getCurrent())));
 		component.appendChild(getComponentElements(doc, component, "Resistance", Double.toString(newComponent.getResistance())));
 		component.appendChild(getComponentElements(doc, component, "Voltage", Double.toString(newComponent.getVoltage())));
+		component.appendChild(getComponentElements(doc, component, "positionX", Double.toString(newComponent.getPositionX())));
+		component.appendChild(getComponentElements(doc, component, "positionY", Double.toString(newComponent.getPositionY())));
+		component.appendChild(getComponentElements(doc, component, "ID", (newComponent.getId())));
+		component.appendChild(getComponentElements(doc, component, "inputID", (newComponent.getInput().getId())));
+		component.appendChild(getComponentElements(doc, component, "outputID", (newComponent.getOutput().getId())));
 		
 		return component;
 	}

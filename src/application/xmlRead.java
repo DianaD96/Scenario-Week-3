@@ -31,6 +31,8 @@ public class xmlRead {
 		
 	}
 	
+	private ArrayList<Component> connections = new ArrayList<Component>();
+	
 	public ArrayList<Component> readXML() {
 		JFileChooser f = new JFileChooser();
         //f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
@@ -57,21 +59,17 @@ public class xmlRead {
                 compList.add(getComponent(nodeList.item(i)));
             }
                         
-            //lets print Component list information
-//            for (Component comp : compList) {
-//                System.out.println(comp.getClass().getCanonicalName());
-//            }
-            
             for (int i = 0; i < compList.size(); i++) {
             	System.out.println(compList.get(i).getClass().getCanonicalName());
             }
             
-        } catch (SAXException | ParserConfigurationException | IOException e1) {
+        } catch (Exception e1) {
             e1.printStackTrace();
         }
         
         return compList;
 	}
+	
 	
 	private static Component getComponent(Node node) {
         Component comp = null;
@@ -91,16 +89,23 @@ public class xmlRead {
             } else {
             	comp = new Component();
             }
-            
+          
             comp.setCurrent(Double.parseDouble(getTagValue("Current", element)));
             comp.setResistance(Double.parseDouble(getTagValue("Resistance", element)));
             comp.setVoltage(Double.parseDouble(getTagValue("Voltage", element)));
+            comp.setPositionX(Double.parseDouble(getTagValue("positionX", element)));
+            comp.setPositionY(Double.parseDouble(getTagValue("positionY", element)));
+            comp.setInputId(getTagValue("inputID",element));
+            comp.setOutputId(getTagValue("outputID",element));
+            comp.setId(getTagValue("ID",element));
         }
         
         return comp;
 	}
+	
+
  
- 
+	// Ignore
     private static String getTagValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
         Node node = (Node) nodeList.item(0);
