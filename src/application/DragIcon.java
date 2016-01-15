@@ -56,6 +56,8 @@ public class DragIcon extends AnchorPane{
 		
 		switch (mType) {
 		
+		case motor:
+			getStyleClass().add("icon-motor");
 		case ammeter:
 			getStyleClass().add("icon-ammeter");
 		break;
@@ -67,11 +69,7 @@ public class DragIcon extends AnchorPane{
 		case resistor:
 			getStyleClass().add("icon-resistor");
 		break;
-
-		case switch_icon:
-			getStyleClass().add("icon-switch_icon");
-		break;
-
+		
 		case inductor:
 			getStyleClass().add("icon-inductor");
 		break;

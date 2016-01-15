@@ -69,9 +69,9 @@
                         <Text fx:id="battery_0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Text fx:id="battery_1" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <Text fx:id="battery_2" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                        <Text fx:id="resistor_1" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                        <Text fx:id="resistor_2" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-                        <Text fx:id="resistor_3" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                        <Text fx:id="resistor_0" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Text fx:id="resistor_1" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <Text fx:id="resistor_2" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Component" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Value" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <TextField fx:id="battery_0_value" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />

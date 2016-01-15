@@ -7,7 +7,7 @@ public enum DragIconType {
 	capacitor,
 	bulb,
 	inductor,
-	switch_icon,
+	motor,
 	source,
 	dot,
 	cubic_curve

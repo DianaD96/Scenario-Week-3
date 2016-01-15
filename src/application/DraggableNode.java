@@ -126,6 +126,14 @@ public class DraggableNode extends AnchorPane {
 			
 			switch (mType) {
 			
+			case motor:
+			{
+				title_bar.setText("Mot "+container.motor_counter);
+				getStyleClass().add("icon-motor");
+				container.motor_counter++;
+				break;
+			}
+			
 			case ammeter:
 			{
 				title_bar.setText("Amm "+container.ammeter_counter);
@@ -150,14 +158,6 @@ public class DraggableNode extends AnchorPane {
 				break;
 			}
 
-			case switch_icon:
-			{
-				title_bar.setText("Switch "+container.switch_icon_counter);
-				getStyleClass().add("icon-switch_icon");
-				container.switch_icon_counter++;
-				break;
-			}
-			
 			case inductor:
 			{
 				title_bar.setText("Induc "+container.inductor_counter);

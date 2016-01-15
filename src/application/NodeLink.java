@@ -169,11 +169,30 @@ public class NodeLink extends AnchorPane {
 				break;
 			case resistor:
 			{
-				Resistor resist = new Resistor(container.resistance_value);
-				resist.setInput(alpha);
+				if(sourceA==null){
+					sourceA = new Resistor(10);
+					sourceA.setId(source.getId());
+					System.out.println(sourceA);
+					container.listOfHandledComponents.add(sourceA);
+					System.out.println(container.listOfHandledComponents.size());
+				}
+				
+				System.out.println("Making new light bulb "+sourceA);
+				sourceA.setOutput(alpha);
+				alpha.setInput(sourceA);
 				break;
 			}
-			case switch_icon:
+			case motor:
+				if(sourceA==null){
+					sourceA = new Motor(container.voltage_int);
+					sourceA.setId(source.getId());
+					container.listOfHandledComponents.add(sourceA);
+				}
+				
+				
+				sourceA.setOutput(alpha);
+				alpha.setInput(sourceA);
+				starting = sourceA;
 				break;
 			case voltmeter:
 				break;
@@ -222,12 +241,28 @@ public class NodeLink extends AnchorPane {
 				break;
 			case resistor:
 			{
-				Resistor resist = new Resistor(container.resistance_value);
-				resist.setOutput(alpha);
+				if(targetA==null){
+					targetA = new Resistor(10);
+					targetA.setId(target.getId());
+					container.listOfHandledComponents.add(targetA);
+				}
+				alpha.setOutput(targetA);
+				targetA.setInput(alpha);
 				break;
 			}
-			case switch_icon:
+			case motor:
+				if(targetA == null){
+					//targetA.setPositionX();
+					targetA = new Motor(container.voltage_int);
+					targetA.setId(target.getId());
+					container.listOfHandledComponents.add(targetA);
+					
+				}
+				alpha.setOutput(targetA);
+				targetA.setInput(alpha);
+				starting = targetA;
 				break;
+			
 			case voltmeter:
 				break;
 			case source:

@@ -81,7 +81,7 @@ public class xmlRead {
             } else if (getTagValue("Name", element).equals("Bulb")) {
             	comp = new Bulb();
             } else if (getTagValue("Name", element).equals("Motor")) {
-            	comp = new Motor();
+            	comp = new Motor(Double.parseDouble(getTagValue("Resistance", element)));
             } else if (getTagValue("Name", element).equals("Resistor")) {
             	comp = new Resistor(Double.parseDouble(getTagValue("Resistance", element)));
             } else if (getTagValue("Name", element).equals("Wire")) {
