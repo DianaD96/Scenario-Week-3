@@ -220,4 +220,10 @@ public class Circuit{
 			System.out.println("Data for "+ item +" V: "+item.getVoltage()+" R: "+item.getResistance()+" I: "+item.getCurrent());
 		}
 	}
+	
+	public  ArrayList<Component> getCircuitList(){
+		//for(Component x : list)
+			//System.out.println(x);
+		return list;
+	}
 }

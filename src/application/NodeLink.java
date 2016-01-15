@@ -234,6 +234,7 @@ public class NodeLink extends AnchorPane {
 			{	
 				//cell.setOutput(alpha);
 				if(targetA == null){
+					//targetA.setPositionX();
 					targetA = new Battery(container.voltage_int);
 					targetA.setId(target.getId());
 					container.listOfHandledComponents.add(targetA);

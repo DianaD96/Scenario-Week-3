@@ -2,6 +2,7 @@ package application;
 
 import java.awt.TextArea;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.ClipboardContent;
@@ -41,7 +43,9 @@ public class RootLayout extends AnchorPane{
 	@FXML TextField resistor_1_value;
 	@FXML TextField resistor_2_value;
 	@FXML Button run_again;
+	@FXML MenuItem save;
 	
+	Circuit series = new Circuit();
 	private DragIcon mDragOverIcon = null;
 	
 	private EventHandler<DragEvent> mIconDragOverRoot = null;
@@ -124,7 +128,7 @@ public class RootLayout extends AnchorPane{
 				if(x.equals("Bulb 0") || x.equals("Bulb 1") || x.equals("Bulb 2"))
 				{
 					final_text=final_text+"\nVoltage: "+ battery_voltage_sum*1.0/nr_bulb;
-					final_text=final_text+"\nResistance: "+ battery_voltage_sum*1.0/nr_bulb;
+					final_text=final_text+"\nResistance: "+ battery_voltage_sum*1.0;
 					final_text=final_text+"\nCurrent: "+ "1.0";
 				}
 			}
@@ -133,15 +137,48 @@ public class RootLayout extends AnchorPane{
 		component_text.setText(final_text);
 	}
 	
+	// Action for the SAVE Button
+	public void saveP (ActionEvent ac)
+	{
+		xmlWrite newWriter = new xmlWrite(series.getCircuitList());			
+	}
+	
+	//Action to Load Project
+	public void loadP (ActionEvent ac)
+	{
+		xmlRead newReader = new xmlRead();
+		 ArrayList<Component> testList = new ArrayList<Component>();
+		 testList = newReader.readXML();
+		 connectCircuit(testList);
+		 System.out.println("Going to run recreated list!!");
+		 series.run(testList.get(0));
+	}
+	
+	//Stuff for load and save
+	public void connectCircuit(ArrayList<Component> raw){
+		for(Component x: raw){
+			x.setInput(getComponent(raw,x.getInputId()));
+			x.setOutput(getComponent(raw,x.getOutputId()));
+		}
+	}
+	public Component getComponent(ArrayList<Component> list,String id){
+		for(Component x: list){
+			if(x.getId().equals(id))
+				return x;
+		}
+		return null;
+	}
+	
+	
 	// Action for the RUN Button
 	public void handleButton(ActionEvent ac)
 	{
 		print_final_values();
+		
 	}
 	
 	public void print_final_values()
 	{
-		Circuit series = new Circuit();
 		System.out.println("Starting at "+NodeLink.getStartingPoint());
 		series.run(NodeLink.getStartingPoint());
 		
@@ -204,10 +241,9 @@ public class RootLayout extends AnchorPane{
 			i++;
 		}
 		component_text.setText(final_text);
-		
-		//battery- voltage
-		//resistor- resistance
 	}
+
+	
 	public RootLayout() {
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(

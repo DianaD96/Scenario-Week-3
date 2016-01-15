@@ -45,7 +45,7 @@ public class Main extends Application {
   //          	Circuit series = new Circuit();
 //				series.run(NodeLink.cell);
             	//System.out.println(NodeLink.cell.getClass());
-;
+
 		
 		launch(args);
 		System.out.println("test");

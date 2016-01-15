@@ -4,7 +4,7 @@ public class Battery extends Component {
 	
 	public Battery(double voltage){
 		super();
-		this.voltage = voltage;
+		this.setVoltage(voltage);
 		this.setImage("image_path");
 	}
 
