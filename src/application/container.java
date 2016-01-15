@@ -15,4 +15,17 @@ public class container {
 	static public Integer capacitor_counter=0;
 	static public Integer dot_counter=0;
 	static public Integer source_counter=0;
+	
+	static public Integer ammeter_counter2=0;
+	static public Integer voltmeter_counter2=0;
+	static public Integer resistor_counter2=0;
+	static public Integer switch_icon_counter2=0;
+	static public Integer inductor_counter2=0;
+	static public Integer bulb_counter2=0;
+	static public Integer capacitor_counter2=0;
+	static public Integer dot_counter2=0;
+	static public Integer source_counter2=0;
+	
+	static public int resistance_value=10;
+	static public int voltage_int=10;
 }

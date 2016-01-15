@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.TextArea;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextField;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.DragEvent;
@@ -26,7 +28,20 @@ public class RootLayout extends AnchorPane{
 	@FXML AnchorPane right_pane;
 	@FXML VBox left_pane;
 	@FXML Text component_text;
-
+	@FXML Text battery_0;
+	@FXML Text battery_1;
+	@FXML Text battery_2;
+	@FXML Text resistor_0;
+	@FXML Text resistor_1;
+	@FXML Text resistor_2;
+	@FXML TextField battery_0_value;
+	@FXML TextField battery_1_value;
+	@FXML TextField battery_2_value;
+	@FXML TextField resistor_0_value;
+	@FXML TextField resistor_1_value;
+	@FXML TextField resistor_2_value;
+	@FXML Button run_again;
+	
 	private DragIcon mDragOverIcon = null;
 	
 	private EventHandler<DragEvent> mIconDragOverRoot = null;
@@ -35,20 +50,151 @@ public class RootLayout extends AnchorPane{
 	
 	@FXML static Button run_button;
 	
+	int battery_voltage_sum=0;
+	//Action for the Run Again Button
+	public void handleButton2(ActionEvent ac)
+	{
+		int nr_bat=0;
+		if(!battery_0_value.getText().equals(""))
+		{
+			container.voltage_int=Integer.parseInt(battery_0_value.getText());
+			battery_voltage_sum=battery_voltage_sum+container.voltage_int; nr_bat++;
+		}
+		if(!battery_1_value.getText().equals(""))
+		{
+			battery_voltage_sum=battery_voltage_sum+Integer.parseInt(battery_1_value.getText());nr_bat++;
+		}
+		if(!battery_2_value.getText().equals(""))
+		{
+			battery_voltage_sum=battery_voltage_sum+Integer.parseInt(battery_2_value.getText());nr_bat++;
+		}
+		resistor_0_value.getText();
+		resistor_1_value.getText();
+		resistor_2_value.getText();
+		component_text.setText("");
+		
+		int nr_bulb=0;
+		for(String x: container.print_stuff)
+		{
+			if(x.equals("Bulb 0") || x.equals("Bulb 1") || x.equals("Bulb 2"))
+				nr_bulb++;
+		}
+		int i=0;
+		String final_text = new String();
+		final_text=final_text+"OUTPUTS:";
+		for (String x: container.print_stuff)
+		{
+			if (i%4==0) //Component
+			{
+				final_text=final_text+"\n\nComponent: "+ x;
+				if(x.equals("Source 0"))
+				{
+					final_text=final_text+"\nVoltage: "+ battery_0_value.getText();
+					final_text=final_text+"\nResistance: "+ "0.0";
+					final_text=final_text+"\nCurrent: "+ "0.0";
+					run_again.setVisible(true);
+					battery_0.setText("Source 0");
+					battery_0_value.setVisible(true);
+					battery_0_value.setText(battery_0_value.getText());
+				}
+				if(x.equals("Source 1"))
+				{
+					final_text=final_text+"\nVoltage: "+ battery_1_value.getText();
+					final_text=final_text+"\nResistance: "+ "0.0";
+					final_text=final_text+"\nCurrent: "+ "0.0";
+					battery_1.setText("Source 1");
+					battery_1_value.setVisible(true);
+					battery_1_value.setText(battery_1_value.getText());
+				}
+				if(x.equals("Source 2"))
+				{
+					final_text=final_text+"\nVoltage: "+ battery_2_value.getText();
+					final_text=final_text+"\nResistance: "+ "0.0";
+					final_text=final_text+"\nCurrent: "+ "0.0";
+					battery_2.setText("Source 2");
+					battery_2_value.setVisible(true);
+					battery_2_value.setText(battery_2_value.getText());
+				}
+				if(x.equals("Wire"))
+				{
+					final_text=final_text+"\nVoltage: "+ battery_voltage_sum;
+					final_text=final_text+"\nResistance: "+ "0.0";
+					final_text=final_text+"\nCurrent: "+ "1.0";
+				}
+				if(x.equals("Bulb 0") || x.equals("Bulb 1") || x.equals("Bulb 2"))
+				{
+					final_text=final_text+"\nVoltage: "+ battery_voltage_sum*1.0/nr_bulb;
+					final_text=final_text+"\nResistance: "+ battery_voltage_sum*1.0/nr_bulb;
+					final_text=final_text+"\nCurrent: "+ "1.0";
+				}
+			}
+			i++;
+		}
+		component_text.setText(final_text);
+	}
+	
+	// Action for the RUN Button
 	public void handleButton(ActionEvent ac)
 	{
-		System.out.println("..........");
+		print_final_values();
+	}
+	
+	public void print_final_values()
+	{
 		Circuit series = new Circuit();
 		System.out.println("Starting at "+NodeLink.getStartingPoint());
 		series.run(NodeLink.getStartingPoint());
 		
 		String final_text = new String();
 		int i=0;
+		int bat=0, res=0; // counting batteries+resistors
 		final_text=final_text+"OUTPUTS:";
 		for (String x: container.print_stuff)
 		{
 			if (i%4==0) //Component
+			{
 				final_text=final_text+"\n\nComponent: "+x;
+				if(x.equals("Source 0"))
+				{
+					run_again.setVisible(true);
+					battery_0.setText("Source 0");
+					battery_0_value.setVisible(true);
+					battery_0_value.setText("10V (default)");
+				}
+				if(x.equals("Source 1"))
+				{
+					battery_1.setText("Source 1");
+					battery_1_value.setVisible(true);
+					battery_1_value.setText("10V (default)");
+				}
+				if(x.equals("Source 2"))
+				{
+					battery_2.setText("Source 2");
+					battery_2_value.setVisible(true);
+					battery_2_value.setText("10V (default)");
+				}
+				
+				if(x.equals("Resistor 0"))
+				{
+					resistor_0.setText("Resistor 0");
+					resistor_0_value.setVisible(true);
+					resistor_0_value.setText("10V (default)");
+				}
+				if(x.equals("Resistor 1"))
+				{
+					resistor_1.setText("Resistor 1");
+					resistor_1_value.setVisible(true);
+					resistor_1_value.setText("10V (default)");
+				}
+				if(x.equals("Resistor 2"))
+				{
+					resistor_2.setText("Resistor 2");
+					resistor_2_value.setVisible(true);
+					resistor_2_value.setText("10V (default)");
+				}
+
+			}
+			
 			if ((i-1)%4==0) // Voltage
 				final_text=final_text+"\nVoltage: "+x;
 			if ((i-2)%4==0) // Resistance
@@ -57,10 +203,11 @@ public class RootLayout extends AnchorPane{
 				final_text=final_text+"\nCurrent: "+x;
 			i++;
 		}
-			
-			component_text.setText(final_text);
+		component_text.setText(final_text);
+		
+		//battery- voltage
+		//resistor- resistance
 	}
-	
 	public RootLayout() {
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(
@@ -288,7 +435,13 @@ public class RootLayout extends AnchorPane{
 						}
 						
 						if (source != null && target != null)
+						{
 							link.bindEnds(source, target);
+							
+							Container2.run_again_link.add(link);
+							Container2.run_again_drag.add(source);
+							Container2.run_again_drag.add(target);
+						}
 					}
 						
 				}

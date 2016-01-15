@@ -167,43 +167,42 @@ public class Circuit{
 	}
 	
 	public void printList(){
-		container.bulb_counter--;
-		container.source_counter--;
-		container.ammeter_counter--;
-		container.voltmeter_counter--;
-		container.resistor_counter--;
-		container.source_counter--;
+		container.bulb_counter2=container.bulb_counter-1;
+		container.source_counter2=container.source_counter-1;
+		container.ammeter_counter2=container.ammeter_counter-1;
+		container.voltmeter_counter2=container.voltmeter_counter-1;
+		container.resistor_counter2=container.resistor_counter-1;
 		for(Component item : list){
 			switch(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())){
 			   
 				case "Ammeter":
 				{
-					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.ammeter_counter);
-					container.ammeter_counter--;
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.ammeter_counter2);
+					container.ammeter_counter2--;
 					break;
 				}
 				case "Voltmeter":
 				{
-					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.voltmeter_counter);
-					container.voltmeter_counter--;
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.voltmeter_counter2);
+					container.voltmeter_counter2--;
 					break;
 				}
 				case "Resistor":
 				{
-					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.resistor_counter);
-					container.resistor_counter--;
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.resistor_counter2);
+					container.resistor_counter2--;
 					break;
 				}
 				case "Bulb":
 				{
-					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.bulb_counter);
-					container.bulb_counter--;
+					container.print_stuff.add(item.getClass().getCanonicalName().substring(12, item.getClass().getCanonicalName().length())+" "+container.bulb_counter2);
+					container.bulb_counter2--;
 					break;
 				}
 				case "Battery":
 				{
-					container.print_stuff.add("Source "+container.source_counter);
-					container.source_counter--;
+					container.print_stuff.add("Source "+container.source_counter2);
+					container.source_counter2--;
 					break;
 				}
 				

@@ -192,7 +192,7 @@ public class DraggableNode extends AnchorPane {
 			
 			case source:
 			{
-				title_bar.setText("Source "+container.source_counter++);
+				title_bar.setText("Source "+container.source_counter);
 				getStyleClass().add("icon-source");
 				container.source_counter++;
 				break;

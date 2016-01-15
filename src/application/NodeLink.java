@@ -169,7 +169,7 @@ public class NodeLink extends AnchorPane {
 				break;
 			case resistor:
 			{
-				Resistor resist = new Resistor(10);
+				Resistor resist = new Resistor(container.resistance_value);
 				resist.setInput(alpha);
 				break;
 			}
@@ -180,7 +180,7 @@ public class NodeLink extends AnchorPane {
 			case source:
 			{
 				if(sourceA==null){
-					sourceA = new Battery(10);
+					sourceA = new Battery(container.voltage_int);
 					sourceA.setId(source.getId());
 					container.listOfHandledComponents.add(sourceA);
 				}
@@ -222,7 +222,7 @@ public class NodeLink extends AnchorPane {
 				break;
 			case resistor:
 			{
-				Resistor resist = new Resistor(10);
+				Resistor resist = new Resistor(container.resistance_value);
 				resist.setOutput(alpha);
 				break;
 			}
@@ -234,7 +234,7 @@ public class NodeLink extends AnchorPane {
 			{	
 				//cell.setOutput(alpha);
 				if(targetA == null){
-					targetA = new Battery(10);
+					targetA = new Battery(container.voltage_int);
 					targetA.setId(target.getId());
 					container.listOfHandledComponents.add(targetA);
 					
